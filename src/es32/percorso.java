@@ -84,7 +84,9 @@ public class percorso {
         
         List<posizione> posizioni = null;
         percorso per = new percorso();
-		
+        double minlat=180,maxlat=0,minlon=180,maxlon=0;
+        
+        
         try {
             posizioni = per.parseDocument(args[0]);
         } catch (ParserConfigurationException | SAXException | IOException exception) {
@@ -96,6 +98,34 @@ public class percorso {
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());
         }
+        
+        for(int i=0;i<posizioni.size();i++){
+            if(i<posizioni.size()){
+                if(Double.valueOf(posizioni.get(i).latitudine)<minlat){
+                    minlat=Double.valueOf(posizioni.get(i).latitudine);
+                }
+            }
+            if(i<posizioni.size()){
+                if(Double.valueOf(posizioni.get(i).latitudine)>maxlat){
+                    maxlat=Double.valueOf(posizioni.get(i).latitudine);
+                }
+            }
+            if(i<posizioni.size()){
+                if(Double.valueOf(posizioni.get(i).longitudine)<minlon){
+                    minlon=Double.valueOf(posizioni.get(i).longitudine);
+                }
+            }
+            if(i<posizioni.size()){
+                if(Double.valueOf(posizioni.get(i).longitudine)>maxlon){
+                    maxlon=Double.valueOf(posizioni.get(i).longitudine);
+                }
+            }
+        }
+        System.out.println("latitudine minima: " + minlat);
+        System.out.println("latitudine massima: " + maxlat);
+        System.out.println("longitudine minima: " + minlon);
+        System.out.println("longitudine massima: " + maxlon);
+        
     }
     
 }
