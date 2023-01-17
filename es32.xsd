@@ -1,0 +1,22 @@
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="tipo_posizione">
+        <xs:sequence>
+            <xs:element name="logitudine" type="xs:double"/>
+            <xs:element name="latitudine" type="xs:double"/>
+            <xs:element name="altitudine" type="xs:double"/>
+            <xs:element name="dataOra" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="percorso">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="posizione" type="tipo_posizione" minOccurs="0" maxOccurs="unbouded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
